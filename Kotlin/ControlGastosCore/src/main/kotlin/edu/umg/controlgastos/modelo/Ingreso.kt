@@ -1,4 +1,9 @@
 package edu.umg.controlgastos.modelo
 
-class Ingreso {
-}
+data class Ingreso(
+    val id: Int,
+    val monto: Double,
+    val descripcion: String,
+    val tipoIngreso: String,
+    val fecha: String
+)

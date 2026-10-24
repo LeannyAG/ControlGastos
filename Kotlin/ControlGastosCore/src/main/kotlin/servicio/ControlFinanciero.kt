@@ -1,5 +1,7 @@
 package servicio
 
+import edu.umg.controlgastos.datos.MovimientoRepository
+import edu.umg.controlgastos.datos.MovimientoRepositoryEnMemoria
 import edu.umg.controlgastos.modelo.Gasto
 import edu.umg.controlgastos.modelo.Ingreso
 
@@ -21,4 +23,22 @@ class ControlFinanciero {
 
         return totalIngresos - totalGastos
     }
+
+    suspend fun generarResumen(
+        repositorio: MovimientoRepository
+    ): ResumenFinanciero {
+
+        val ingresos = repositorio.listarIngresos()
+        val gastos = repositorio.listarGastos()
+
+        return ResumenFinanciero(
+            totalIngresos = calcularTotalIngresos(ingresos),
+            totalGastos = calcularTotalGastos(gastos),
+            saldoDisponible = calcularBalance(ingresos, gastos),
+            ultimosGastos = repositorio.obtenerUltimosGastos()
+        )
+    }
 }
+
+
+

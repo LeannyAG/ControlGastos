@@ -90,4 +90,16 @@ fun main() = runBlocking {
     repositorio.obtenerUltimosGastos().forEach {
         println("${it.descripcion}: Q${it.monto}")
     }
+    println("\n--- RESUMEN FINANCIERO ---")
+
+    val resumen = control.generarResumen(repositorio)
+
+    println("Total de ingresos: Q${resumen.totalIngresos}")
+    println("Total de gastos: Q${resumen.totalGastos}")
+    println("Saldo disponible: Q${resumen.saldoDisponible}")
+
+    println("\nUltimos 3 gastos:")
+    resumen.ultimosGastos.forEach { gasto ->
+        println("${gasto.descripcion}: Q${gasto.monto}")
+    }
 }

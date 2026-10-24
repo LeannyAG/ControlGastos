@@ -30,6 +30,6 @@ override suspend fun obtenerUltimosGastos(): List<Gasto> {
             compareByDescending<Gasto> { it.fecha }
                 .thenByDescending { it.id }
         )
-        .take(5)
+        .take(3)
 }
 }

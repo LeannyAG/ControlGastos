@@ -1,3 +1,17 @@
 <resources>
+    <string-array name="categorias_gasto">
+        <item>Gasolina</item>
+        <item>Supermercado</item>
+        <item>Universidad</item>
+        <item>Seguros</item>
+        <item>Alquiler</item>
+        <item>Comida</item>
+        <item>Entretenimiento</item>
+        <item>Membresías</item>
+        <item>Servicios básicos</item>
+        <item>Hipoteca</item>
+        <item>Transporte</item>
+        <item>Otros</item>
+    </string-array>
     <string name="app_name">Control Gastos</string>
 </resources>

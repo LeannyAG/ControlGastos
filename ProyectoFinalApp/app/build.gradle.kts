@@ -38,7 +38,8 @@ android {
 }
 
 dependencies {
-    implementation("umg.edu.gt.progra2:gastos-core:1.0.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("edu.umg.controlgastos:control-gastos-core:1.0.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)

@@ -24,6 +24,8 @@
     </repositories>
 
     <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -46,6 +48,7 @@
                         </goals>
                     </execution>
                 </executions>
+
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>

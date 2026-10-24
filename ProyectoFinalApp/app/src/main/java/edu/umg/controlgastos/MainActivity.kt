@@ -1,5 +1,6 @@
 package edu.umg.controlgastos
-import edu.umg.programacion2.gastos.modelo.Gasto
+import edu.umg.controlgastos.modelo.Gasto
+
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

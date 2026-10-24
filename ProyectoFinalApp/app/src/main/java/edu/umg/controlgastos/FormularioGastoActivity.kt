@@ -1,40 +1,86 @@
 package edu.umg.controlgastos
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class FormularioGastoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_formulario_gasto)
 
-        val btnGuardar = findViewById<android.widget.Button>(R.id.btnGuardarGasto)
+        val descripcion = findViewById<EditText>(R.id.edtDescripcion)
+        val monto = findViewById<EditText>(R.id.edtMonto)
+        val categoria = findViewById<Spinner>(R.id.spinnerCategoria)
+        val btnGuardar = findViewById<Button>(R.id.btnGuardarGasto)
 
         btnGuardar.setOnClickListener {
-            val descripcion = findViewById<android.widget.EditText>(
-                R.id.edtDescripcion
-            ).text.toString().trim()
 
-            val monto = findViewById<android.widget.EditText>(
-                R.id.edtMonto
-            ).text.toString().toDoubleOrNull()
+            val textoDescripcion = descripcion.text.toString().trim()
+            val valorMonto = monto.text.toString().toDoubleOrNull()
 
-            if (descripcion.isBlank() || monto == null || !monto.isFinite() || monto <= 0) {
-                android.widget.Toast.makeText(
+            if (textoDescripcion.isEmpty() ||
+                valorMonto == null ||
+                !valorMonto.isFinite() ||
+                valorMonto <= 0
+            ) {
+                Toast.makeText(
                     this,
                     "Ingresa una descripción y un monto válido",
-                    android.widget.Toast.LENGTH_SHORT
+                    Toast.LENGTH_SHORT
                 ).show()
                 return@setOnClickListener
             }
 
-            android.widget.Toast.makeText(
-                this,
-                "Datos válidos. Falta conectar el guardado.",
-                android.widget.Toast.LENGTH_SHORT
-            ).show()
+            val fechaActual = SimpleDateFormat(
+                "yyyy-MM-dd",
+                Locale.getDefault()
+            ).format(Date())
+
+            val gasto = GastoEntity(
+                descripcion = textoDescripcion,
+                monto = valorMonto,
+                categoria = categoria.selectedItem.toString(),
+                fecha = fechaActual
+            )
+
+            btnGuardar.isEnabled = false
+
+            lifecycleScope.launch {
+                try {
+                    val dao = AppDatabase
+                        .obtenerBaseDeDatos(applicationContext)
+                        .gastoDao()
+
+                    dao.insertar(gasto)
+
+                    Toast.makeText(
+                        this@FormularioGastoActivity,
+                        "Gasto guardado correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    finish()
+
+                } catch (e: Exception) {
+                    btnGuardar.isEnabled = true
+
+                    Toast.makeText(
+                        this@FormularioGastoActivity,
+                        "Error al guardar el gasto",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }
     }
 }

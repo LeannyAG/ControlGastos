@@ -12,11 +12,14 @@ import edu.umg.controlgastos.databinding.ActivityMainBinding
 import edu.umg.controlgastos.modelo.Categoria
 import edu.umg.controlgastos.modelo.Gasto
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var gastoAdapter: GastoAdapter
+
+    private val presupuestoMensual = 3000.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +27,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializar la lista de gastos
+        // Inicializar la lista horizontal de gastos
         gastoAdapter = GastoAdapter(emptyList()) { gasto ->
             // Después agregaremos la opción para editar un gasto
         }
 
         binding.recyclerGastos.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
         binding.recyclerGastos.adapter = gastoAdapter
 
         // Abrir el formulario para registrar un gasto
@@ -39,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Leer los gastos guardados en SQLite
+        // Observar los gastos guardados en SQLite
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 val dao = AppDatabase
@@ -47,6 +51,7 @@ class MainActivity : AppCompatActivity() {
                     .gastoDao()
 
                 dao.listarTodos().collect { entidades ->
+
                     val gastos = entidades.map { entidad ->
                         Gasto(
                             id = entidad.id,
@@ -60,10 +65,39 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
 
+                    // Actualizar las tarjetas de gastos recientes
                     gastoAdapter.actualizarLista(gastos)
+
+                    // Calcular el total de gastos registrados
+                    val totalGastos = entidades.sumOf { it.monto }
+
+                    // Mostrar los importes en quetzales
+                    binding.txtTotalGastos.text =
+                        String.format(Locale.getDefault(), "Q %.2f", totalGastos)
+
+                    // Todavía no hay ingresos conectados
+                    val totalIngresos = 0.0
+
+                    binding.txtIngresos.text =
+                        String.format(Locale.getDefault(), "Q %.2f", totalIngresos)
+
+                    // Saldo provisional: ingresos menos gastos
+                    val saldo = totalIngresos - totalGastos
+
+                    binding.txtSaldo.text =
+                        String.format(Locale.getDefault(), "Q %.2f", saldo)
+
+                    // Actualizar el presupuesto mensual
+                    binding.txtPresupuestoGastado.text =
+                        String.format(Locale.getDefault(), "Q %.2f", totalGastos)
+
+                    binding.progresoPresupuesto.max =
+                        presupuestoMensual.toInt()
+
+                    binding.progresoPresupuesto.progress =
+                        totalGastos.coerceIn(0.0, presupuestoMensual).toInt()
                 }
             }
         }
     }
 }
-

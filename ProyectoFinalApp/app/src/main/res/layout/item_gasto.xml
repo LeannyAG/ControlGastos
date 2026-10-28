@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_marginBottom="8dp"
-    android:background="#E8F1FC">
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/fondo_tarjeta_gasto">
 
     <TextView
         android:id="@+id/txtDescripcion"
@@ -14,7 +15,8 @@
         android:text="Descripción del gasto"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:textColor="#173B70" />
+        android:textColor="#173B70"
+        android:maxLines="2" />
 
     <TextView
         android:id="@+id/txtCategoria"
@@ -22,16 +24,17 @@
         android:layout_height="wrap_content"
         android:text="Categoría"
         android:textSize="14sp"
-        android:layout_marginTop="4dp" />
+        android:textColor="#71829D"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/txtMonto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Q 0.00"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#C0392B"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="12dp" />
 
 </LinearLayout>

@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
             // Después agregaremos la opción para editar un gasto
         }
 
-        binding.recyclerGastos.layoutManager = LinearLayoutManager(this)
+        binding.recyclerGastos.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerGastos.adapter = gastoAdapter
 
         // Abrir el formulario para registrar un gasto

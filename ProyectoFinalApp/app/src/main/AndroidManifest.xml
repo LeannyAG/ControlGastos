@@ -28,6 +28,10 @@
         <activity
             android:name=".FormularioIngresoActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".RegistroUsuarioActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F0F5FF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="52dp"
+        android:paddingBottom="36dp">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Control"
+            android:textColor="#101D3A"
+            android:textSize="43sp"
+            android:fontFamily="sans"
+            android:letterSpacing="-0.03"
+            android:includeFontPadding="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gastos"
+            android:textColor="#3478E5"
+            android:textSize="43sp"
+            android:textStyle="bold"
+            android:fontFamily="sans"
+            android:letterSpacing="-0.03"
+            android:includeFontPadding="false" />
+
+        <View
+            android:layout_width="58dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="30dp"
+            android:background="#B6D0FF" />
+
+        <!-- Tarjeta del formulario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="22dp"
+            android:background="@drawable/fondo_tarjeta_registro"
+            android:elevation="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Crea tu perfil"
+                android:textColor="#101D3A"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:text="Para comenzar a organizar tus finanzas"
+                android:textColor="#667596"
+                android:textSize="14sp" />
+
+            <!-- Nombres -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE(S)"
+                android:textColor="#596987"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtNombreUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:hint="María Fernanda"
+                android:inputType="textCapWords|textPersonName"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#172747"
+                android:textColorHint="#8B9AB5"
+                android:textSize="16sp"
+                android:singleLine="true" />
+
+            <!-- Apellidos -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="APELLIDOS"
+                android:textColor="#596987"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtApellidosUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:hint="López García"
+                android:inputType="textCapWords|textPersonName"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#172747"
+                android:textColorHint="#8B9AB5"
+                android:textSize="16sp"
+                android:singleLine="true" />
+
+            <!-- Correo -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="CORREO ELECTRÓNICO"
+                android:textColor="#596987"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtCorreoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:hint="maria@gmail.com"
+                android:inputType="textEmailAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#172747"
+                android:textColorHint="#8B9AB5"
+                android:textSize="16sp"
+                android:singleLine="true" />
+
+            <!-- Botón -->
+            <Button
+                android:id="@+id/btnRegistrarUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/fondo_boton_registro"
+                android:backgroundTint="@null"
+                android:elevation="3dp"
+                android:text="Crear perfil   →"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

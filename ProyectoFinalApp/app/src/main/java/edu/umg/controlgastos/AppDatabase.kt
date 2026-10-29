@@ -6,21 +6,39 @@ package edu.umg.controlgastos
         import androidx.room.migration.Migration
         import androidx.sqlite.db.SupportSQLiteDatabase
 
-        @Database(
-            entities = [
-                GastoEntity::class,
-                IngresoEntity::class
-            ],
-            version = 2,
-            exportSchema = false
-        )
+@Database(
+    entities = [
+        GastoEntity::class,
+        IngresoEntity::class,
+        UsuarioEntity::class
+    ],
+    version = 3,
+    exportSchema = false
+)
         abstract class AppDatabase : RoomDatabase() {
 
             abstract fun gastoDao(): GastoDao
 
             abstract fun ingresoDao(): IngresoDao
 
+    abstract fun usuarioDao(): UsuarioDao
+
             companion object {
+
+                private val MIGRACION_2_3 = object : Migration(2, 3) {
+                    override fun migrate(db: SupportSQLiteDatabase) {
+                        db.execSQL(
+                            """
+            CREATE TABLE IF NOT EXISTS usuarios (
+                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                nombre TEXT NOT NULL,
+                correo TEXT NOT NULL,
+                fechaRegistro TEXT NOT NULL
+            )
+            """.trimIndent()
+                        )
+                    }
+                }
 
                 @Volatile
                 private var INSTANCE: AppDatabase? = null
@@ -48,12 +66,14 @@ package edu.umg.controlgastos
                             AppDatabase::class.java,
                             "control_gastos_db"
                         )
-                            .addMigrations(MIGRACION_1_2)
+                            .addMigrations(MIGRACION_1_2, MIGRACION_2_3)
                             .build()
 
                         INSTANCE = instancia
                         instancia
                     }
                 }
+
+
     }
 }

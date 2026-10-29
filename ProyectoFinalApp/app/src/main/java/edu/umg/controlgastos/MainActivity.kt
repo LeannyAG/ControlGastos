@@ -25,8 +25,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //para que el usuario ya registrado entre de una ve a la pantalla princiapl
+        val preferencias = getSharedPreferences("control_gastos", MODE_PRIVATE)
+
+        if (!preferencias.getBoolean("registro_completado", false)) {
+            startActivity(Intent(this, RegistroUsuarioActivity::class.java))
+            finish()
+            return
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        lifecycleScope.launch {
+            val usuarioDao = AppDatabase
+                .obtenerBaseDeDatos(applicationContext)
+                .usuarioDao()
+
+            val usuario = usuarioDao.obtenerPrimerUsuario()
+
+            val nombre = usuario?.nombre
+                ?.trim()
+                ?.substringBefore(" ")
+                ?: "Usuario"
+
+            binding.txtSaludoUsuario.text = "¡Hola, $nombre!"
+        }
 
         gastoAdapter = GastoAdapter(emptyList()) { gasto ->
             // Después agregaremos la opción para editar un gasto.

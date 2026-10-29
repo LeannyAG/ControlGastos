@@ -46,9 +46,10 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/txtSaludoUsuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¡Hola, tu nombre!"
+                    android:text="¡Hola!"
                     android:textColor="#203451"
                     android:textSize="21sp"
                     android:textStyle="bold" />

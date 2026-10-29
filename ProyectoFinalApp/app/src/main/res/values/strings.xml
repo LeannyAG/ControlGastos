@@ -13,5 +13,13 @@
         <item>Transporte</item>
         <item>Otros</item>
     </string-array>
+         <string-array name="categorias_ingreso">
+        <item>Salario</item>
+        <item>Negocio</item>
+        <item>Ventas</item>
+        <item>Bonificaciones</item>
+        <item>Otros ingresos</item>
+    </string-array>
+
     <string name="app_name">Control Gastos</string>
 </resources>

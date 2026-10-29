@@ -1,8 +1,8 @@
-
 package edu.umg.controlgastos
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import edu.umg.controlgastos.databinding.ActivityMainBinding
 import edu.umg.controlgastos.modelo.Categoria
 import edu.umg.controlgastos.modelo.Gasto
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -27,9 +28,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inicializar la lista horizontal de gastos
         gastoAdapter = GastoAdapter(emptyList()) { gasto ->
-            // Después agregaremos la opción para editar un gasto
+            // Después agregaremos la opción para editar un gasto.
         }
 
         binding.recyclerGastos.layoutManager =
@@ -37,22 +37,39 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerGastos.adapter = gastoAdapter
 
-        // Abrir el formulario para registrar un gasto
         binding.btnNuevoGasto.setOnClickListener {
-            val intent = Intent(this, FormularioGastoActivity::class.java)
-            startActivity(intent)
+            val opciones = arrayOf("Registrar gasto", "Registrar ingreso")
+
+            AlertDialog.Builder(this)
+                .setTitle("¿Qué deseas registrar?")
+                .setItems(opciones) { _, seleccion ->
+                    when (seleccion) {
+                        0 -> startActivity(
+                            Intent(this, FormularioGastoActivity::class.java)
+                        )
+
+                        1 -> startActivity(
+                            Intent(this, FormularioIngresoActivity::class.java)
+                        )
+                    }
+                }
+                .show()
         }
 
-        // Observar los gastos guardados en SQLite
+        val database = AppDatabase.obtenerBaseDeDatos(applicationContext)
+        val gastoDao = database.gastoDao()
+        val ingresoDao = database.ingresoDao()
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                val dao = AppDatabase
-                    .obtenerBaseDeDatos(applicationContext)
-                    .gastoDao()
+                combine(
+                    gastoDao.listarTodos(),
+                    ingresoDao.listarTodos()
+                ) { gastos, ingresos ->
+                    Pair(gastos, ingresos)
+                }.collect { (entidadesGasto, entidadesIngreso) ->
 
-                dao.listarTodos().collect { entidades ->
-
-                    val gastos = entidades.map { entidad ->
+                    val gastos = entidadesGasto.map { entidad ->
                         Gasto(
                             id = entidad.id,
                             monto = entidad.monto,
@@ -65,34 +82,25 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
 
-                    // Actualizar las tarjetas de gastos recientes
                     gastoAdapter.actualizarLista(gastos)
 
-                    // Calcular el total de gastos registrados
-                    val totalGastos = entidades.sumOf { it.monto }
-
-                    // Mostrar los importes en quetzales
-                    binding.txtTotalGastos.text =
-                        String.format(Locale.getDefault(), "Q %.2f", totalGastos)
-
-                    // Todavía no hay ingresos conectados
-                    val totalIngresos = 0.0
-
-                    binding.txtIngresos.text =
-                        String.format(Locale.getDefault(), "Q %.2f", totalIngresos)
-
-                    // Saldo provisional: ingresos menos gastos
+                    val totalGastos = entidadesGasto.sumOf { it.monto }
+                    val totalIngresos = entidadesIngreso.sumOf { it.monto }
                     val saldo = totalIngresos - totalGastos
 
+                    binding.txtIngresos.text =
+                        String.format(java.util.Locale.US, "Q %,.2f", totalIngresos)
+
+                    binding.txtTotalGastos.text =
+                        String.format(java.util.Locale.US, "Q %,.2f", totalGastos)
+
                     binding.txtSaldo.text =
-                        String.format(Locale.getDefault(), "Q %.2f", saldo)
+                        String.format(java.util.Locale.US, "Q %,.2f", saldo)
 
-                    // Actualizar el presupuesto mensual
                     binding.txtPresupuestoGastado.text =
-                        String.format(Locale.getDefault(), "Q %.2f", totalGastos)
+                        String.format(java.util.Locale.US, "Q %,.2f", totalGastos)
 
-                    binding.progresoPresupuesto.max =
-                        presupuestoMensual.toInt()
+                    binding.progresoPresupuesto.max = presupuestoMensual.toInt()
 
                     binding.progresoPresupuesto.progress =
                         totalGastos.coerceIn(0.0, presupuestoMensual).toInt()

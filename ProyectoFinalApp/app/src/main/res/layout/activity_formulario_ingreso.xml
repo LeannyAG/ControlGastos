@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F8FC"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar ingreso"
+            android:textColor="#173B70"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:textColor="#25364A"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtDescripcionIngreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ej. Salario"
+            android:inputType="textCapSentences"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monto en quetzales"
+            android:textColor="#25364A"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtMontoIngreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ej. 500.00"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoría"
+            android:textColor="#25364A"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinnerCategoriaIngreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/categorias_ingreso"
+            android:layout_marginBottom="28dp" />
+
+        <Button
+            android:id="@+id/btnGuardarIngreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar ingreso"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#177354" />
+
+    </LinearLayout>
+</ScrollView>

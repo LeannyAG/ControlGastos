@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background=" @drawable/fondo_saldo"
+            android:background="@drawable/fondo_saldo"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -110,7 +110,7 @@
                 android:layout_height="112dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="6dp"
-                android:background="	@drawable/fondo_ingresos"
+                android:background="@drawable/fondo_ingresos"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="14dp">
@@ -139,7 +139,7 @@
                 android:layout_height="112dp"
                 android:layout_weight="1"
                 android:layout_marginStart="6dp"
-                android:background="	@drawable/fondo_gastos"
+                android:background="@drawable/fondo_gastos"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="14dp">
@@ -204,7 +204,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="	@drawable/fondo_presupuesto"
+            android:background="@drawable/fondo_presupuesto"
             android:orientation="vertical"
             android:padding="16dp">
 

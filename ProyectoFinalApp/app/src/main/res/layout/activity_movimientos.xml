@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EAF0F8"
+    android:padding="18dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mis movimientos"
+        android:textColor="#203451"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aquí puedes consultar tus ingresos y gastos"
+        android:textColor="#71829D"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="22dp"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/btnTodos"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="Todos"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btnIngresos"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="Ingresos"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btnGastos"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="Gastos"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp">
+
+        <TextView
+            android:id="@+id/txtResumenIngresos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ingresos: Q 0.00"
+            android:textColor="#177354"
+            android:textStyle="bold"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/txtResumenGastos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Gastos: Q 0.00"
+            android:textColor="#BD453E"
+            android:textStyle="bold"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMovimientos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="18dp"
+        android:clipToPadding="false"
+        android:paddingBottom="12dp"/>
+
+
+
+</LinearLayout>

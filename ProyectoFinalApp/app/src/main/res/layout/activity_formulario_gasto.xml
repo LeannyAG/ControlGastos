@@ -3,84 +3,128 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F8FC"
+    android:background="#EAF0F8"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="22dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nuevo gasto"
-            android:textSize="26sp"
+            android:text="← Registrar gasto"
+            android:textColor="#203451"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:textColor="#173B70"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registra tus movimientos"
-            android:textSize="15sp"
-            android:textColor="#60758B"
-            android:layout_marginBottom="24dp" />
+            android:text="Mantén tus gastos bajo control"
+            android:textColor="#71829D"
+            android:textSize="14sp"
+            android:layout_marginBottom="22dp"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción"
-            android:textStyle="bold"
-            android:textColor="#173B70" />
+            android:orientation="vertical"
+            android:background="@drawable/fondo_tarjeta_registro"
+            android:padding="22dp">
 
-        <EditText
-            android:id="@+id/edtDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ej. Gasolina"
-            android:inputType="textCapSentences"
-            android:layout_marginBottom="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nuevo gasto"
+                android:textColor="#203451"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Monto (Q)"
-            android:textStyle="bold"
-            android:textColor="#173B70" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingresa los detalles de tu gasto"
+                android:textColor="#71829D"
+                android:textSize="13sp"
+                android:layout_marginBottom="22dp"/>
 
-        <EditText
-            android:id="@+id/edtMonto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="0.00"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción"
+                android:textColor="#294875"
+                android:textStyle="bold"
+                android:layout_marginBottom="7dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Categoría"
-            android:textStyle="bold"
-            android:textColor="#173B70" />
+            <EditText
+                android:id="@+id/edtDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:paddingHorizontal="15dp"
+                android:hint="Ej. Compra de despensa"
+                android:textColor="#203451"
+                android:textColorHint="#9AA9BD"
+                android:inputType="textCapSentences"
+                android:layout_marginBottom="20dp"/>
 
-        <Spinner
-            android:id="@+id/spinnerCategoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/categorias_gasto"
-            android:layout_marginBottom="28dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monto del gasto"
+                android:textColor="#294875"
+                android:textStyle="bold"
+                android:layout_marginBottom="7dp"/>
 
-        <Button
-            android:id="@+id/btnGuardarGasto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar gasto"
-            android:backgroundTint="#34518F"
-            android:textColor="#FFFFFF" />
+            <EditText
+                android:id="@+id/edtMonto"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:paddingHorizontal="15dp"
+                android:hint="Q 0.00"
+                android:textColor="#BD453E"
+                android:textColorHint="#9AA9BD"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoría"
+                android:textColor="#294875"
+                android:textStyle="bold"
+                android:layout_marginBottom="7dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:paddingHorizontal="12dp"
+                android:entries="@array/categorias_gasto"
+                android:layout_marginBottom="28dp"/>
+
+            <Button
+                android:id="@+id/btnGuardarGasto"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/fondo_boton_registro"
+                android:text="Guardar gasto"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>

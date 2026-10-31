@@ -1,76 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F8FC"
+    android:background="#EAF0F8"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="22dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registrar ingreso"
-            android:textColor="#173B70"
-            android:textSize="26sp"
+            android:text="← Registrar ingreso"
+            android:textColor="#203451"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripción"
-            android:textColor="#25364A"
-            android:textSize="16sp" />
+            android:text="Registra el dinero que recibes"
+            android:textColor="#71829D"
+            android:textSize="14sp"
+            android:layout_marginBottom="22dp"/>
 
-        <EditText
-            android:id="@+id/edtDescripcionIngreso"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej. Salario"
-            android:inputType="textCapSentences"
-            android:layout_marginBottom="16dp" />
+            android:orientation="vertical"
+            android:background="@drawable/fondo_tarjeta_registro"
+            android:padding="22dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Monto en quetzales"
-            android:textColor="#25364A"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nuevo ingreso"
+                android:textColor="#203451"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="6dp"/>
 
-        <EditText
-            android:id="@+id/edtMontoIngreso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ej. 500.00"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="16dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingresa los detalles de tu ingreso"
+                android:textColor="#71829D"
+                android:textSize="13sp"
+                android:layout_marginBottom="22dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Categoría"
-            android:textColor="#25364A"
-            android:textSize="16sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción"
+                android:textColor="#294875"
+                android:textStyle="bold"
+                android:layout_marginBottom="7dp"/>
 
-        <Spinner
-            android:id="@+id/spinnerCategoriaIngreso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/categorias_ingreso"
-            android:layout_marginBottom="28dp" />
+            <EditText
+                android:id="@+id/edtDescripcionIngreso"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:paddingHorizontal="15dp"
+                android:hint="Ej. Salario mensual"
+                android:textColor="#203451"
+                android:textColorHint="#9AA9BD"
+                android:inputType="textCapSentences"
+                android:layout_marginBottom="20dp"/>
 
-        <Button
-            android:id="@+id/btnGuardarIngreso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar ingreso"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#177354" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monto del ingreso"
+                android:textColor="#294875"
+                android:textStyle="bold"
+                android:layout_marginBottom="7dp"/>
+
+            <EditText
+                android:id="@+id/edtMontoIngreso"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:paddingHorizontal="15dp"
+                android:hint="Q 0.00"
+                android:textColor="#177354"
+                android:textColorHint="#9AA9BD"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoría"
+                android:textColor="#294875"
+                android:textStyle="bold"
+                android:layout_marginBottom="7dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerCategoriaIngreso"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/fondo_campo_registro"
+                android:paddingHorizontal="12dp"
+                android:entries="@array/categorias_ingreso"
+                android:layout_marginBottom="28dp"/>
+
+            <Button
+                android:id="@+id/btnGuardarIngreso"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/fondo_boton_registro"
+                android:text="Guardar ingreso"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

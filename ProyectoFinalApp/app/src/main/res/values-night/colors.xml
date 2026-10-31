@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#8BB6FF</color>
+    <color name="colorSecondary">#A5C7FF</color>
+
+    <color name="colorFondo">#101827</color>
+    <color name="colorTarjeta">#1D293B</color>
+
+    <color name="colorTexto">#F1F5FC</color>
+    <color name="colorTextoSecundario">#AAB9CE</color>
+
+    <color name="colorIngreso">#65D6A4</color>
+    <color name="colorGasto">#FF8982</color>
 </resources>

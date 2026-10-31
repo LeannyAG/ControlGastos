@@ -32,6 +32,14 @@
         <activity
             android:name=".RegistroUsuarioActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".MovimientosActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PresupuestoActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

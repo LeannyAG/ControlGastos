@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -77,10 +78,8 @@ class RegistroUsuarioActivity : AppCompatActivity() {
                         )
                     )
 
-                    getSharedPreferences(
-                        "control_gastos",
-                        MODE_PRIVATE
-                    ).edit()
+                    getSharedPreferences("control_gastos", MODE_PRIVATE)
+                        .edit()
                         .putBoolean("registro_completado", true)
                         .apply()
 

@@ -1,4 +1,5 @@
 package edu.umg.controlgastos
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.Locale
 
 class MovimientoAdapter(
-    private var movimientos: List<Movimiento>
+    private var movimientos: List<Movimiento>,
+    private val alSeleccionar: (Movimiento) -> Unit
 ) : RecyclerView.Adapter<MovimientoAdapter.MovimientoViewHolder>() {
 
     class MovimientoViewHolder(itemView: View) :
@@ -30,6 +32,7 @@ class MovimientoAdapter(
         parent: ViewGroup,
         viewType: Int
     ): MovimientoViewHolder {
+
         val vista = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_movimiento, parent, false)
 
@@ -40,30 +43,41 @@ class MovimientoAdapter(
         holder: MovimientoViewHolder,
         position: Int
     ) {
+
         val movimiento = movimientos[position]
 
         holder.descripcion.text = movimiento.descripcion
+
         holder.detalle.text =
             "${movimiento.categoria} • ${movimiento.fecha}"
 
         if (movimiento.esIngreso) {
+
             holder.icono.text = "↙"
             holder.icono.setTextColor(0xFF177354.toInt())
             holder.monto.setTextColor(0xFF177354.toInt())
+
             holder.monto.text = String.format(
                 Locale.US,
                 "+ Q %,.2f",
                 movimiento.monto
             )
+
         } else {
+
             holder.icono.text = "↗"
             holder.icono.setTextColor(0xFFBD453E.toInt())
             holder.monto.setTextColor(0xFFBD453E.toInt())
+
             holder.monto.text = String.format(
                 Locale.US,
                 "- Q %,.2f",
                 movimiento.monto
             )
+        }
+
+        holder.itemView.setOnClickListener {
+            alSeleccionar(movimiento)
         }
     }
 

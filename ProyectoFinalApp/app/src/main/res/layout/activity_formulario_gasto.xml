@@ -124,6 +124,19 @@
                 android:textStyle="bold"
                 android:textAllCaps="false"/>
 
+            <Button
+                android:id="@+id/btnEliminarGasto"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:text="Eliminar gasto"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:backgroundTint="#BD453E"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
     </LinearLayout>

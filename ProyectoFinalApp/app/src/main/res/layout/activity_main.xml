@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="14dp"
         android:background="#FFFFFF">
 
         <!-- Encabezado -->
@@ -20,12 +20,12 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingVertical="12dp">
+            android:paddingVertical="6dp">
 
             <ImageView
                 android:id="@+id/imgFotoPerfil"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="#E4EDF9"
                 android:src="@android:drawable/ic_menu_camera"
                 android:scaleType="centerCrop"
@@ -39,14 +39,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingStart="12dp">
+                android:paddingStart="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="¡Buenos días!"
                     android:textColor="#71829D"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/txtSaludoUsuario"
@@ -54,17 +54,19 @@
                     android:layout_height="wrap_content"
                     android:text="¡Hola!"
                     android:textColor="#203451"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
             </LinearLayout>
 
             <TextView
-                android:layout_width="40dp"
-                android:layout_height="48dp"
+                android:layout_width="36dp"
+                android:layout_height="44dp"
                 android:gravity="center"
                 android:text="♧"
                 android:textColor="#315394"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
         </LinearLayout>
 
         <!-- Saldo disponible -->
@@ -74,97 +76,111 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/fondo_saldo"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Saldo disponible"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/txtSaldo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="6dp"
                 android:text="Q 0.00"
                 android:textColor="#FFFFFF"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Balance de tus movimientos"
                 android:textColor="#E2E9FA"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Tarjetas de ingresos y gastos -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="112dp"
+                android:layout_height="96dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="6dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/fondo_ingresos"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="14dp">
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="↙ Ingresos"
                     android:textColor="#177354"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtIngresos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="10dp"
                     android:text="Q 0.00"
                     android:textColor="#17634D"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="17sp"
+                    android:autoSizeStepGranularity="1sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="112dp"
+                android:layout_height="96dp"
                 android:layout_weight="1"
-                android:layout_marginStart="6dp"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/fondo_gastos"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="14dp">
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="↗ Gastos"
                     android:textColor="#BD453E"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtTotalGastos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="10dp"
                     android:text="Q 0.00"
                     android:textColor="#A43E37"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="17sp"
+                    android:autoSizeStepGranularity="1sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -172,7 +188,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="16dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -182,7 +198,7 @@
                 android:layout_weight="1"
                 android:text="Gastos recientes"
                 android:textColor="#203451"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -191,15 +207,16 @@
                 android:layout_height="wrap_content"
                 android:text="Ver todos"
                 android:textColor="#315FA9"
-                android:textSize="15sp" />
+                android:textSize="13sp"
+                android:clickable="true"
+                android:focusable="true" />
         </LinearLayout>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerGastos"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="14dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="8dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="false" />
 
@@ -208,86 +225,76 @@
             android:id="@+id/cardPresupuesto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/fondo_presupuesto"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="13dp"
+            android:clickable="true"
+            android:focusable="true">
 
             <TextView
+                android:id="@+id/txtTituloPresupuesto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="▤  Presupuesto del mes  ›"
-                android:id="@+id/txtTituloPresupuesto"
                 android:textColor="#294875"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtPresupuestoGastado"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Q 0.00"
                     android:textColor="#294875"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
 
                 <TextView
+                    android:id="@+id/txtLimitePresupuesto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:id="@+id/txtLimitePresupuesto"
+                    android:layout_marginStart="6dp"
                     android:text="de Q 3,000.00"
                     android:textColor="#71829D"
-                    android:textSize="14sp" />
+                    android:textSize="12sp"
+                    android:maxLines="1" />
             </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progresoPresupuesto"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginTop="14dp"
+                android:layout_height="8dp"
+                android:layout_marginTop="10dp"
                 android:max="3000"
                 android:progress="0"
                 android:progressTint="#3F78BA"
                 android:progressBackgroundTint="#D1DDED" />
         </LinearLayout>
 
-        <!-- Espacio para la navegación inferior -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="12dp" />
-
+        <!-- Botón para registrar movimientos -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:background="#FFFFFF">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="⌂\nInicio"
-                android:textColor="#315FA9"
-                android:textSize="13sp" />
-
-
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnNuevoGasto"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:layout_marginHorizontal="4dp"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:padding="0dp"
@@ -296,7 +303,7 @@
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#354F91" />
 
-
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

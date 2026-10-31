@@ -3,78 +3,84 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EAF0F8">
+    android:background="#EAF0F8"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="18dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mi presupuesto"
             android:textColor="#203451"
-            android:textSize="26sp"
+            android:textSize="23sp"
             android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Establece cuánto deseas gastar al mes."
             android:textColor="#71829D"
-            android:textSize="15sp"
-            android:layout_marginTop="8dp"/>
+            android:textSize="14sp"
+            android:layout_marginTop="6dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/fondo_tarjeta_registro"
-            android:padding="22dp"
-            android:layout_marginTop="28dp">
+            android:padding="18dp"
+            android:layout_marginTop="22dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Límite mensual (Q)"
                 android:textColor="#294875"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/edtPresupuesto"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="14dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/fondo_campo_registro"
                 android:hint="Ej. 3000"
                 android:inputType="numberDecimal"
-                android:padding="14dp"
+                android:padding="12dp"
                 android:textColor="#203451"
-                android:textColorHint="#71829D"/>
+                android:textColorHint="#71829D"
+                android:textSize="15sp"/>
 
             <Button
                 android:id="@+id/btnGuardarPresupuesto"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="22dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="18dp"
                 android:backgroundTint="#354F91"
                 android:text="Guardar presupuesto"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                android:textSize="14sp"/>
 
         </LinearLayout>
 
         <Button
             android:id="@+id/btnVolverPresupuesto"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="14dp"
             android:backgroundTint="#71829D"
             android:text="Volver"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:textSize="14sp"/>
 
     </LinearLayout>
 </ScrollView>

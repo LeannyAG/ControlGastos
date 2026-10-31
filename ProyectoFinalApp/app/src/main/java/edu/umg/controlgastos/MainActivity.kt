@@ -17,6 +17,8 @@ import java.util.Locale
 import android.net.Uri
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import java.io.File
+import java.io.FileOutputStream
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,12 +31,29 @@ class MainActivity : AppCompatActivity() {
     ) { uri: Uri? ->
 
         if (uri != null) {
-            binding.imgFotoPerfil.setImageURI(uri)
+            try {
+                val archivoFoto = File(filesDir, "foto_perfil.jpg")
 
-            getSharedPreferences("control_gastos", MODE_PRIVATE)
-                .edit()
-                .putString("foto_perfil", uri.toString())
-                .apply()
+                contentResolver.openInputStream(uri)?.use { entrada ->
+                    FileOutputStream(archivoFoto).use { salida ->
+                        entrada.copyTo(salida)
+                    }
+                } ?: throw Exception("No se pudo leer la imagen")
+
+                binding.imgFotoPerfil.setImageURI(
+                    Uri.fromFile(archivoFoto)
+                )
+
+                getSharedPreferences("control_gastos", MODE_PRIVATE)
+                    .edit()
+                    .putString("foto_perfil", archivoFoto.absolutePath)
+                    .apply()
+
+            } catch (e: Exception) {
+                binding.imgFotoPerfil.setImageResource(
+                    android.R.drawable.ic_menu_camera
+                )
+            }
         }
     }
 
@@ -67,14 +86,23 @@ class MainActivity : AppCompatActivity() {
         val fotoGuardada = preferenciasFoto.getString("foto_perfil", null)
 
         if (fotoGuardada != null) {
-            binding.imgFotoPerfil.setImageURI(Uri.parse(fotoGuardada))
+            try {
+                binding.imgFotoPerfil.setImageURI(Uri.parse(fotoGuardada))
+            } catch (e: Exception) {
+                binding.imgFotoPerfil.setImageResource(
+                    android.R.drawable.ic_menu_camera
+                )
+
+                preferenciasFoto.edit()
+                    .remove("foto_perfil")
+                    .apply()
+            }
         }
 
 // Abrir galería al tocar la foto
         binding.imgFotoPerfil.setOnClickListener {
             seleccionarFoto.launch("image/*")
         }
-
         // 3. Conectar base de datos
         val database = AppDatabase.obtenerBaseDeDatos(applicationContext)
 
@@ -250,3 +278,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+
